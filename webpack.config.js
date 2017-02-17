@@ -1,0 +1,29 @@
+const validate = require('webpack-validator');
+const path = require('path');
+
+const config = {
+  entry: path.join(__dirname, '/client/index.js'),
+  output: {
+    filename: 'bundle.js',
+    path: path.join(__dirname, '/public')
+  },
+  module: {
+    loaders: [
+      {
+        test: /\.jsx?$/,
+        loaders: ['babel-loader'],
+        exclude: /node_modules/
+      },
+      {
+        test: /\.s?css$/,
+        loaders: ['style', 'css', 'sass']
+      }
+    ]
+  },
+  resolve: {
+    extensions: ['', '.js', '.jsx']
+  },
+  devtool: 'eval-source-map'
+};
+
+module.exports = validate(config);
