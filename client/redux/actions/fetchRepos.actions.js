@@ -62,7 +62,7 @@ actions.fetchSearchResultsError = (err) =>
 
 actions.fetchReadme = (fullname, id) => {
   return (dispatch) => {
-    dispatch(actions.fetchReadmeRequest());
+    dispatch(actions.fetchReadmeRequest(id));
     return request
       .get(`/repos/${fullname}/readme`, {
         headers: {Accept: 'application/vnd.github.VERSION.html'}
@@ -76,8 +76,8 @@ actions.fetchReadme = (fullname, id) => {
   };
 };
 
-actions.fetchReadmeRequest = () =>
-  ({ type: types.FETCH_README_REQUEST });
+actions.fetchReadmeRequest = (id) =>
+  ({ type: types.FETCH_README_REQUEST, id });
 
 actions.fetchReadmeSuccess = (id, readme) =>
   ({ type: types.FETCH_README_SUCCESS, id, readme });
