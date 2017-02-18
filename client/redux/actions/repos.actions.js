@@ -3,11 +3,11 @@ import axios from 'axios';
 
 let actions = {};
 
-actions.fetchSearchResults = () => {
+actions.fetchSearchResults = (query) => {
   return (dispatch) => {
-    dispatch(actions.fetchSearchResultsRequest());
+    dispatch(actions.fetchSearchResultsRequest(query));
     return axios
-      .get('https://api.github.com/search/repositories?q=react+in:name&sort=stars&order=desc')
+      .get(`https://api.github.com/search/repositories?q=${query}+in:name&sort=stars&order=desc`)
       .then(res => {
         dispatch(actions.fetchSearchResultsSuccess(res.data.items));
       })
@@ -17,8 +17,8 @@ actions.fetchSearchResults = () => {
   };
 };
 
-actions.fetchSearchResultsRequest = () =>
-  ({ type: types.FETCH_SEARCH_RESULTS_REQUEST });
+actions.fetchSearchResultsRequest = (query) =>
+  ({ type: types.FETCH_SEARCH_RESULTS_REQUEST, query });
 
 actions.fetchSearchResultsSuccess = (repos) =>
   ({ type: types.FETCH_SEARCH_RESULTS_SUCCESS, repos });

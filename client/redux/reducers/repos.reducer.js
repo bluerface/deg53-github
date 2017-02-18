@@ -1,6 +1,7 @@
 import types from '../types';
 
 var initialState = {
+  query: null,
   data: null,
   loading: false,
   error: null
@@ -12,6 +13,7 @@ export default function (state = initialState, action) {
   switch (action.type) {
     case types.FETCH_SEARCH_RESULTS_REQUEST:
       newState.loading = true;
+      newState.query = action.query;
       newState.error = null;
       break;
 

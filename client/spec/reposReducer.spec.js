@@ -11,7 +11,8 @@ describe('repos reducer', function () {
       var state = reposReducer(undefined, {});
       state.error = 'Im an error';
       deepFreeze(state);
-      var newState = reposReducer(state, actions.fetchSearchResultsRequest());
+      var newState = reposReducer(state, actions.fetchSearchResultsRequest('bob'));
+      expect(newState.query).to.equal('bob');
       expect(newState.loading).to.be.true;
       expect(newState.error).to.be.null;
     });

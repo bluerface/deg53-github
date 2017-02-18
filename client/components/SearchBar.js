@@ -21,7 +21,7 @@ SearchBar.propTypes = {
 
 const mapDispatchToProps = (dispatch) => ({
   search () {
-    dispatch(actions.fetchSearchResults());
+    dispatch(actions.fetchSearchResults('react'));
   }
 });
 
