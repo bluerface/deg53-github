@@ -1,28 +1,44 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Field, reduxForm} from 'redux-form';
 import actions from '../redux/actions';
 
-const SearchBar = (props) => {
+var SearchBar = (props) => {
   return (
-    <div className='input-group'>
-      <input type='text' className='form-control' placeholder='Search for Repo...' />
-      <span className='input-group-btn'>
-        <button className='btn btn-default' type='button' onClick={props.search}>
-          <i className='fa fa-search' />
-        </button>
-      </span>
-    </div>
+    <form onSubmit={props.handleSubmit}>
+      <div className='input-group'>
+        <Field
+          name='searchQuery'
+          component='input'
+          type='text'
+          placeholder='Search for Repo...'
+          className='form-control'
+           />
+        <span className='input-group-btn'>
+          <button
+            className='btn btn-default'
+            type='submit'
+            disabled={props.pristine}>
+            <i className='fa fa-search' />
+          </button>
+        </span>
+      </div>
+    </form>
   );
 };
 
 SearchBar.propTypes = {
-  search: React.PropTypes.func.isRequired
+  handleSubmit: React.PropTypes.func.isRequired
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  search () {
-    dispatch(actions.fetchSearchResults('react'));
+  onSubmit (values) {
+    dispatch(actions.fetchSearchResults(values.searchQuery));
   }
 });
 
-export default connect(null, mapDispatchToProps)(SearchBar);
+SearchBar = reduxForm({form: 'search'})(SearchBar);
+
+SearchBar = connect(null, mapDispatchToProps)(SearchBar);
+
+export default SearchBar;
