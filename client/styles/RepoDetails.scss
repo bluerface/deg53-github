@@ -1,0 +1,26 @@
+@import 'colors';
+
+.readme {
+  &>h3 {
+    border: 1px solid $bordergrey;
+    border-bottom: none;
+    border-radius: 3px 3px 0 0;
+    padding: 9px 10px 10px;
+    margin: 0;
+    background-color: $backgroundgrey;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+  }
+  article {
+    border: 1px solid $bordergrey;
+    border-radius: 0 0 3px 3px;
+    padding: 45px 45px;
+    &>*:first-child {
+      margin-top: 0 !important;
+    }
+    .anchor {
+      display: none;
+    }
+  }
+}
