@@ -1,0 +1,16 @@
+$lightgrey: #e5e5e5;
+$textgrey: #767676;
+
+.repo-card {
+  padding: 25px 0 20px;
+  border-bottom: 1px solid $lightgrey;
+  h3 {
+    margin-top: 0;
+  }
+  p {
+    color: $textgrey;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
