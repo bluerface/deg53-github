@@ -1,6 +1,6 @@
-import reposActions from './repos.actions.js';
+import fetchReposActions from './fetchRepos.actions.js';
 
 export default Object.assign(
   {},
-  reposActions
+  fetchReposActions
 );

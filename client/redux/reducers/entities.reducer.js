@@ -33,3 +33,7 @@ function normalise (reposArray) {
     return acc;
   }, repos);
 }
+
+export function getReposArray (state) {
+  return state.repos.allIds.map((id) => state.repos.byId[id]);
+}

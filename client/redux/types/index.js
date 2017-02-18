@@ -1,5 +1,5 @@
-import * as repoTypes from './repos.types.js';
+import * as fetchRepoTypes from './fetchRepos.types.js';
 
 export default Object.assign({},
-  repoTypes
+  fetchRepoTypes
 );

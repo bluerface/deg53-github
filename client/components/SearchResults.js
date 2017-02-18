@@ -1,18 +1,19 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {getReposArray} from '../redux/reducers';
 import RepoCard from './RepoCard';
 
-var SearchResults = ({repos}) => {
+var SearchResults = ({ui, repos}) => {
   return (
     <div style={{paddingTop: '20px'}}>
-      {!repos.data && !repos.loading && 'Search for a repo'}
-      {repos.loading && 'Loading...'}
-      {repos.data && <h2>
+      {!ui.results && !ui.loading && 'Search for a repo'}
+      {ui.loading && 'Loading...'}
+      {ui.results && <h2>
         <i className='fa fa-search' style={{paddingRight: '10px', fontSize: '0.8em', verticalAlign: 'middle'}} />
-        Search results for: {repos.query}
+        Search results for: {ui.query}
       </h2>}
       {
-        repos.data && repos.data.map((repo, i) => (
+        ui.results && repos.map((repo, i) => (
           <RepoCard key={i} repo={repo} />
         ))
       }
@@ -22,11 +23,12 @@ var SearchResults = ({repos}) => {
 };
 
 SearchResults.propTypes = {
-  repos: React.PropTypes.object.isRequired
+  repos: React.PropTypes.array.isRequired
 };
 
 const mapStateToProps = (state) => ({
-  repos: state.repos
+  ui: state.ui.search,
+  repos: getReposArray(state)
 });
 
 SearchResults = connect(mapStateToProps)(SearchResults);
