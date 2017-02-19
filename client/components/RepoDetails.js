@@ -1,5 +1,8 @@
 import React from 'react';
+import format from 'format-number';
 import {connect} from 'react-redux';
+
+import Chip from './Chip';
 import actions from '../redux/actions';
 import '../styles/RepoDetails.scss';
 
@@ -12,8 +15,25 @@ class RepoDetails extends React.Component {
   render () {
     var {repo, readme, ui} = this.props;
     return (
-      <div className=''>
-        <h3>{repo.full_name}</h3>
+      <div>
+        <div className='details'>
+          <h1>
+            {repo.full_name}
+            <sup>
+              <a href={repo.html_url} target='_blank'>
+                <i className='fa fa-external-link' />
+              </a>
+            </sup>
+          </h1>
+          <p>
+            <Chip value={repo.owner.login} icon='user' />
+            <Chip value={repo.language} icon='circle' />
+            <Chip value={'Open Issues: ' + format()(repo.open_issues)} icon='exclamation-circle' />
+            <Chip value={'Forks: ' + format()(repo.forks)} icon='code-fork' />
+            <Chip value={'Watchers: ' + format()(repo.watchers)} icon='star' />
+          </p>
+          <p className='description'>{repo.description}</p>
+        </div>
         {ui.loading && 'Loading...'}
         {ui.results &&
           <div className='readme'>

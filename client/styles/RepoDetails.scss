@@ -1,5 +1,26 @@
 @import 'colors';
 
+.details {
+  h1 {
+    margin-bottom: 3px;
+  }
+  p {
+    color: $textgrey;
+  }
+  i {
+    padding-right: 0.2em;
+  }
+  sup {
+    padding-left: 0.5em;
+    font-size: 0.5em;
+  }
+  .description {
+    margin-top: 1.5em;
+    margin-bottom: 2em;
+    font-size: 1.3em;
+  }
+}
+
 .readme {
   &>h3 {
     border: 1px solid $bordergrey;
