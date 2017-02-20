@@ -11,7 +11,10 @@ var Chip = ({value, icon}) => {
 };
 
 Chip.propTypes = {
-  value: React.PropTypes.string.isRequired,
+  value: React.PropTypes.oneOfType([
+    React.PropTypes.string,
+    React.PropTypes.node
+  ]).isRequired,
   icon: React.PropTypes.string
 };
 
