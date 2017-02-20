@@ -1,17 +1,19 @@
 import React from 'react';
-import SearchBar from './SearchBar';
-import SearchResults from './SearchResults';
+
+import Header from './Header';
 import '../styles/Main.scss';
 
 const App = (props) => {
   return (
     <div>
-      <SearchBar />
-      <SearchResults />
+      <Header />
+      {props.children}
     </div>
   );
 };
 
-App.propTypes = {};
+App.propTypes = {
+  children: React.PropTypes.node
+};
 
 export default App;
