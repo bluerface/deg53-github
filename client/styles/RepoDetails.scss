@@ -1,17 +1,25 @@
 @import 'colors';
 
 .details {
-  h1 {
-    margin-bottom: 3px;
+  h3 {
+    padding-bottom: 0.5em;
+    margin-bottom: 0.2em;
+    border-bottom: 2px solid $bordergrey;
   }
   p {
     color: $textgrey;
   }
-  i {
-    padding-right: 0.2em;
+  .fa-book {
+    color: $mediumgrey;
+    font-size: 0.8em;
+    padding-right: 0.5em;
+  }
+  .divider {
+    color: $textgrey;
+    margin: 0 0.25em;
   }
   sup {
-    padding-left: 0.5em;
+    padding-left: 0.7em;
     font-size: 0.5em;
   }
   .description {

@@ -17,14 +17,21 @@ class RepoDetails extends React.Component {
     return (
       <div>
         <div className='details'>
-          <h1>
-            {repo.full_name}
-            <sup>
+          <h3>
+            <i className='fa fa-book pad-right' />
+            <a href={repo.owner.html_url} target='_blank'>
+              {repo.owner.login}
+            </a>
+             <span className='divider'>/</span>
+            <strong>
               <a href={repo.html_url} target='_blank'>
-                <i className='fa fa-external-link' />
+                {repo.name}
+                <sup>
+                  <i className='fa fa-external-link' />
+                </sup>
               </a>
-            </sup>
-          </h1>
+            </strong>
+          </h3>
           <p>
             <Chip value={repo.owner.login} icon='user' />
             <Chip value={repo.language} icon='circle' />
