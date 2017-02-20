@@ -1,0 +1,11 @@
+@import 'colors';
+
+.header {
+  margin-bottom: 2em;
+  img {
+    height: 100px;
+  }
+  p {
+    color: $textgrey;
+  }
+}
